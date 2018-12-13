@@ -79,7 +79,7 @@ public class AESUtil {
      * 解密
      * 解密过程：
      * 1.同加密1-4步
-     * 2.将加密后的字符串反纺成byte[]数组
+     * 2.将加密后的字符串反转成byte[]数组
      * 3.将加密内容解密
      */
     public static String AESDecode(String content) {

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zheng.shop.dao.mapper.ShopProductMapper">
+  <resultMap id="BaseResultMap" type="com.zheng.shop.dao.model.ShopProduct">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="brand_id" jdbcType="BIGINT" property="brandId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="weight" jdbcType="REAL" property="weight" />
+    <result column="is_new" jdbcType="BIT" property="isNew" />
+    <result column="is_hot" jdbcType="BIT" property="isHot" />
+    <result column="is_commend" jdbcType="BIT" property="isCommend" />
+    <result column="is_show" jdbcType="BIT" property="isShow" />
+    <result column="is_del" jdbcType="BIT" property="isDel" />
+    <result column="colors" jdbcType="VARCHAR" property="colors" />
+    <result column="sizes" jdbcType="VARCHAR" property="sizes" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zheng.shop.dao.model.ShopProduct">
+    <result column="img_url" jdbcType="LONGVARCHAR" property="imgUrl" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="package_list" jdbcType="LONGVARCHAR" property="packageList" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, brand_id, name, weight, is_new, is_hot, is_commend, is_show, is_del, colors, 
+    sizes, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    img_url, description, package_list
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.zheng.shop.dao.model.ShopProductExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shop_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.zheng.shop.dao.model.ShopProductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from shop_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from shop_product
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from shop_product
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zheng.shop.dao.model.ShopProductExample">
+    delete from shop_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zheng.shop.dao.model.ShopProduct">
+    insert into shop_product (id, brand_id, name, 
+      weight, is_new, is_hot, is_commend, 
+      is_show, is_del, colors, sizes, 
+      create_time, img_url, description, 
+      package_list)
+    values (#{id,jdbcType=BIGINT}, #{brandId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=REAL}, #{isNew,jdbcType=BIT}, #{isHot,jdbcType=BIT}, #{isCommend,jdbcType=BIT}, 
+      #{isShow,jdbcType=BIT}, #{isDel,jdbcType=BIT}, #{colors,jdbcType=VARCHAR}, #{sizes,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{imgUrl,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}, 
+      #{packageList,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zheng.shop.dao.model.ShopProduct">
+    insert into shop_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="isNew != null">
+        is_new,
+      </if>
+      <if test="isHot != null">
+        is_hot,
+      </if>
+      <if test="isCommend != null">
+        is_commend,
+      </if>
+      <if test="isShow != null">
+        is_show,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="colors != null">
+        colors,
+      </if>
+      <if test="sizes != null">
+        sizes,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="imgUrl != null">
+        img_url,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="packageList != null">
+        package_list,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=REAL},
+      </if>
+      <if test="isNew != null">
+        #{isNew,jdbcType=BIT},
+      </if>
+      <if test="isHot != null">
+        #{isHot,jdbcType=BIT},
+      </if>
+      <if test="isCommend != null">
+        #{isCommend,jdbcType=BIT},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=BIT},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="colors != null">
+        #{colors,jdbcType=VARCHAR},
+      </if>
+      <if test="sizes != null">
+        #{sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgUrl != null">
+        #{imgUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="packageList != null">
+        #{packageList,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zheng.shop.dao.model.ShopProductExample" resultType="java.lang.Long">
+    select count(*) from shop_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update shop_product
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.brandId != null">
+        brand_id = #{record.brandId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weight != null">
+        weight = #{record.weight,jdbcType=REAL},
+      </if>
+      <if test="record.isNew != null">
+        is_new = #{record.isNew,jdbcType=BIT},
+      </if>
+      <if test="record.isHot != null">
+        is_hot = #{record.isHot,jdbcType=BIT},
+      </if>
+      <if test="record.isCommend != null">
+        is_commend = #{record.isCommend,jdbcType=BIT},
+      </if>
+      <if test="record.isShow != null">
+        is_show = #{record.isShow,jdbcType=BIT},
+      </if>
+      <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=BIT},
+      </if>
+      <if test="record.colors != null">
+        colors = #{record.colors,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sizes != null">
+        sizes = #{record.sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.imgUrl != null">
+        img_url = #{record.imgUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.packageList != null">
+        package_list = #{record.packageList,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update shop_product
+    set id = #{record.id,jdbcType=BIGINT},
+      brand_id = #{record.brandId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      weight = #{record.weight,jdbcType=REAL},
+      is_new = #{record.isNew,jdbcType=BIT},
+      is_hot = #{record.isHot,jdbcType=BIT},
+      is_commend = #{record.isCommend,jdbcType=BIT},
+      is_show = #{record.isShow,jdbcType=BIT},
+      is_del = #{record.isDel,jdbcType=BIT},
+      colors = #{record.colors,jdbcType=VARCHAR},
+      sizes = #{record.sizes,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      img_url = #{record.imgUrl,jdbcType=LONGVARCHAR},
+      description = #{record.description,jdbcType=LONGVARCHAR},
+      package_list = #{record.packageList,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update shop_product
+    set id = #{record.id,jdbcType=BIGINT},
+      brand_id = #{record.brandId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      weight = #{record.weight,jdbcType=REAL},
+      is_new = #{record.isNew,jdbcType=BIT},
+      is_hot = #{record.isHot,jdbcType=BIT},
+      is_commend = #{record.isCommend,jdbcType=BIT},
+      is_show = #{record.isShow,jdbcType=BIT},
+      is_del = #{record.isDel,jdbcType=BIT},
+      colors = #{record.colors,jdbcType=VARCHAR},
+      sizes = #{record.sizes,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zheng.shop.dao.model.ShopProduct">
+    update shop_product
+    <set>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=REAL},
+      </if>
+      <if test="isNew != null">
+        is_new = #{isNew,jdbcType=BIT},
+      </if>
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=BIT},
+      </if>
+      <if test="isCommend != null">
+        is_commend = #{isCommend,jdbcType=BIT},
+      </if>
+      <if test="isShow != null">
+        is_show = #{isShow,jdbcType=BIT},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="colors != null">
+        colors = #{colors,jdbcType=VARCHAR},
+      </if>
+      <if test="sizes != null">
+        sizes = #{sizes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="imgUrl != null">
+        img_url = #{imgUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="packageList != null">
+        package_list = #{packageList,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zheng.shop.dao.model.ShopProduct">
+    update shop_product
+    set brand_id = #{brandId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=REAL},
+      is_new = #{isNew,jdbcType=BIT},
+      is_hot = #{isHot,jdbcType=BIT},
+      is_commend = #{isCommend,jdbcType=BIT},
+      is_show = #{isShow,jdbcType=BIT},
+      is_del = #{isDel,jdbcType=BIT},
+      colors = #{colors,jdbcType=VARCHAR},
+      sizes = #{sizes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      img_url = #{imgUrl,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR},
+      package_list = #{packageList,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zheng.shop.dao.model.ShopProduct">
+    update shop_product
+    set brand_id = #{brandId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=REAL},
+      is_new = #{isNew,jdbcType=BIT},
+      is_hot = #{isHot,jdbcType=BIT},
+      is_commend = #{isCommend,jdbcType=BIT},
+      is_show = #{isShow,jdbcType=BIT},
+      is_del = #{isDel,jdbcType=BIT},
+      colors = #{colors,jdbcType=VARCHAR},
+      sizes = #{sizes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <cache type="org.mybatis.caches.ehcache.LoggingEhcache" />
+</mapper>
