@@ -12,7 +12,7 @@
     <artifactId>zheng-shop-common</artifactId>
     <packaging>jar</packaging>
 
-    <name>zheng-upms-common</name>
+    <name>zheng-shop-common</name>
     <url>http://www.zhangshuzheng.cn</url>
 
     <properties>

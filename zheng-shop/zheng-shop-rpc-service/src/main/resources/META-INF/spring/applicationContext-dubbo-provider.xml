@@ -15,28 +15,32 @@
 
     <!--<dubbo:monitor protocol="registry"/>-->
 
-    <!-- 认证方式 -->
-    <bean id="ucenterOauthService" class="com.zheng.ucenter.rpc.service.impl.UcenterOauthServiceImpl"/>
-    <dubbo:service interface="com.zheng.ucenter.rpc.api.UcenterOauthService" ref="ucenterOauthService" timeout="10000"/>
+    <!-- 品牌 -->
+    <bean id="shopBrandService" class="com.zheng.shop.rpc.service.impl.ShopBrandServiceImpl"/>
+    <dubbo:service interface="com.zheng.shop.rpc.api.ShopBrandService" ref="shopBrandService" timeout="10000"/>
 
-    <!-- 用户认证 -->
-    <bean id="ucenterUserOauthService" class="com.zheng.ucenter.rpc.service.impl.UcenterUserOauthServiceImpl"/>
-    <dubbo:service interface="com.zheng.ucenter.rpc.api.UcenterUserOauthService" ref="ucenterUserOauthService" timeout="10000"/>
+    <!-- 客户 -->
+    <bean id="shopBuyerService" class="com.zheng.shop.rpc.service.impl.ShopBuyerServiceImpl"/>
+    <dubbo:service interface="com.zheng.shop.rpc.api.ShopBuyerService" ref="shopBuyerService" timeout="10000"/>
 
-    <!-- 用户操作日志 -->
-    <bean id="ucenterUserLogService" class="com.zheng.ucenter.rpc.service.impl.UcenterUserLogServiceImpl"/>
-    <dubbo:service interface="com.zheng.ucenter.rpc.api.UcenterUserLogService" ref="ucenterUserLogService" timeout="10000"/>
+    <!-- 颜色 -->
+    <bean id="shopColorService" class="com.zheng.shop.rpc.service.impl.ShopColorServiceImpl"/>
+    <dubbo:service interface="com.zheng.shop.rpc.api.ShopColorService" ref="shopColorService" timeout="10000"/>
 
-    <!-- 用户 -->
-    <bean id="uenterUserService" class="com.zheng.ucenter.rpc.service.impl.UcenterUserServiceImpl"/>
-    <dubbo:service interface="com.zheng.ucenter.rpc.api.UcenterUserService" ref="uenterUserService" timeout="10000"/>
+    <!-- 订单详情 -->
+    <bean id="shopDetailService" class="com.zheng.shop.rpc.service.impl.ShopDetailServiceImpl"/>
+    <dubbo:service interface="com.zheng.shop.rpc.api.ShopDetailService" ref="shopDetailService" timeout="10000"/>
 
-    <!-- 用户详情 -->
-    <bean id="ucenterUserDetailsService" class="com.zheng.ucenter.rpc.service.impl.UcenterUserDetailsServiceImpl"/>
-    <dubbo:service interface="com.zheng.ucenter.rpc.api.UcenterUserDetailsService" ref="ucenterUserDetailsService" timeout="10000"/>
+    <!-- 订单 -->
+    <bean id="shopOrderService" class="com.zheng.shop.rpc.service.impl.ShopOrderServiceImpl"/>
+    <dubbo:service interface="com.zheng.shop.rpc.api.ShopOrderService" ref="shopOrderService" timeout="10000"/>
 
-    <!-- 接口服务 -->
-    <bean id="ucenterApiService" class="com.zheng.ucenter.rpc.service.impl.UcenterApiServiceImpl"/>
-    <dubbo:service interface="com.zheng.ucenter.rpc.api.UcenterApiService" ref="ucenterApiService" timeout="10000"/>
+    <!-- 产品 -->
+    <bean id="shopProductService" class="com.zheng.shop.rpc.service.impl.ShopProductServiceImpl"/>
+    <dubbo:service interface="com.zheng.shop.rpc.api.ShopProductService" ref="shopProductService" timeout="10000"/>
+
+    <!-- 库存 -->
+    <bean id="shopSkuService" class="com.zheng.shop.rpc.service.impl.ShopSkuServiceImpl"/>
+    <dubbo:service interface="com.zheng.shop.rpc.api.ShopSkuService" ref="shopSkuService" timeout="10000"/>
 
 </beans>

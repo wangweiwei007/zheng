@@ -6,8 +6,8 @@
     <artifactId>zheng-shop</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>zheng-shop-dao</module>
         <module>zheng-shop-common</module>
+        <module>zheng-shop-dao</module>
         <module>zheng-shop-rpc-api</module>
         <module>zheng-shop-rpc-service</module>
     </modules>
