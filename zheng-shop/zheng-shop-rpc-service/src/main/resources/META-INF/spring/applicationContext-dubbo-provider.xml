@@ -11,7 +11,7 @@
 
     <dubbo:registry address="zookeeper://zkserver:2181"/>
 
-    <dubbo:protocol name="dubbo" port="20884"/>
+    <dubbo:protocol name="dubbo" port="20885"/>
 
     <!--<dubbo:monitor protocol="registry"/>-->
 

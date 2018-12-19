@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+    <dubbo:application name="zheng-shop-admin"/>
+
+    <dubbo:registry file="./zheng-shop-admin-dubbo.cache" address="zookeeper://zkserver:2181"/>
+
+    <!-- 订阅服务 -->
+    <dubbo:consumer check="false"/>
+
+    <!-- 品牌 -->
+    <dubbo:reference id="shopBrandService" interface="com.zheng.shop.rpc.api.ShopBrandService" mock="true"/>
+    <!-- 客户 -->
+    <dubbo:reference id="shopBuyerService" interface="com.zheng.shop.rpc.api.ShopBuyerService" mock="true"/>
+    <!-- 颜色 -->
+    <dubbo:reference id="shopColorService" interface="com.zheng.shop.rpc.api.ShopColorService" mock="true"/>
+    <!-- 订单详情 -->
+    <dubbo:reference id="shopDetailService" interface="com.zheng.shop.rpc.api.ShopDetailService" mock="true"/>
+    <!-- 订单 -->
+    <dubbo:reference id="shopOrderService" interface="com.zheng.shop.rpc.api.ShopOrderService" mock="true"/>
+    <!-- 产品 -->
+    <dubbo:reference id="shopProductService" interface="com.zheng.shop.rpc.api.ShopProductService" mock="true"/>
+    <!-- 库存 -->
+    <dubbo:reference id="shopSkuService" interface="com.zheng.shop.rpc.api.ShopSkuService" mock="true"/>
+
+    <!-- 接口服务 -->
+    <dubbo:reference id="upmsApiService" interface="com.zheng.upms.rpc.api.UpmsApiService" mock="true"/>
+</beans>
