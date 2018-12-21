@@ -11,6 +11,7 @@
         <module>zheng-shop-rpc-api</module>
         <module>zheng-shop-rpc-service</module>
         <module>zheng-shop-admin</module>
+        <module>zheng-shop-web</module>
     </modules>
     <packaging>pom</packaging>
 
