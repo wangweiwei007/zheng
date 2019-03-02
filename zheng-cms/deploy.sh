@@ -20,7 +20,7 @@ killService()
       kill -9 $pid
     fi
 }
-cd $PROJ_PATH/zheng-cms-rpc-service
+cd $PROJ_PATH/zheng-cms/zheng-cms-rpc-service
 mvn clean install -Dmaven.test.skip=true
 
 # 停服务
