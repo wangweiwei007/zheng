@@ -11,7 +11,7 @@
 ### base 函数
 killService()
 {
-    pid=`ps -ef|grep zheng-cms-rpc-service.jar|grep java|awk '{print $2}'`
+    pid=`ps -ef|grep zheng-cms-rpc-service|grep java|awk '{print $2}'`
     echo "zheng-cms-rpc-service Id list :$pid"
     if [ "$pid" = "" ]
     then
@@ -33,10 +33,13 @@ killService
 # rm -rf $SERVER_PROVIDER/zheng-cms-rpc-service.jar
 
 # 复制新的工程
-cp $PROJ_PATH/zheng-cms/zheng-cms-rpc-service/target/zheng-cms-rpc-service.jar $SERVER_PROVIDER/
+cp $PROJ_PATH/zheng-cms/zheng-cms-rpc-service/target/zheng-cms-rpc-service-assembly.tar.gz $SERVER_PROVIDER/
+
+# 解压jar包
+tar -zxvf zheng-cms-rpc-service-assembly.tar.gz
 
 # 启动服务
-java -cp /home/deploy-share/zheng-cms-rpc-service.jar com.zheng.cms.rpc.ZhengCmsRpcServiceApplication
+sh /home/deploy-share/zheng-cms-rpc-service/bin/start.sh
 
 
 
