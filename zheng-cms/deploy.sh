@@ -27,16 +27,16 @@ mvn clean install -Dmaven.test.skip=true
 killService
 
 # 备份原有工程
-cp $SERVER_PROVIDER/zheng-cms-rpc-service.war  $SERVER_PROVIDER/backup/zheng-cms-rpc-service.war.`date +%Y%m%d%H%M`
+# cp $SERVER_PROVIDER/zheng-cms-rpc-service.jar  $SERVER_PROVIDER/backup/zheng-cms-rpc-service.jar.`date +%Y%m%d%H%M`
 
 # 删除原有工程
-rm -rf $SERVER_PROVIDER/zheng-cms-rpc-service.war
+# rm -rf $SERVER_PROVIDER/zheng-cms-rpc-service.jar
 
 # 复制新的工程
-cp $PROJ_PATH/zheng-cms/zheng-cms-rpc-service/target/zheng-cms-rpc-service.war $SERVER_PROVIDER/
+cp $PROJ_PATH/zheng-cms/zheng-cms-rpc-service/target/zheng-cms-rpc-service.jar $SERVER_PROVIDER/
 
 # 启动服务
-java -jar /home/deploy-share/zheng-cms-rpc-service.war
+java -jar /home/deploy-share/zheng-cms-rpc-service.jar
 
 
 
