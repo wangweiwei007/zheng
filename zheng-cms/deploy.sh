@@ -36,7 +36,7 @@ killService
 cp $PROJ_PATH/zheng-cms/zheng-cms-rpc-service/target/zheng-cms-rpc-service.jar $SERVER_PROVIDER/
 
 # 启动服务
-java -jar /home/deploy-share/zheng-cms-rpc-service.jar
+java -cp /home/deploy-share/zheng-cms-rpc-service.jar com.zheng.cms.rpc.ZhengCmsRpcServiceApplication
 
 
 
