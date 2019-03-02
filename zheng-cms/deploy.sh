@@ -36,6 +36,7 @@ killService
 cp $PROJ_PATH/zheng-cms/zheng-cms-rpc-service/target/zheng-cms-rpc-service-assembly.tar.gz $SERVER_PROVIDER/
 
 # 解压jar包
+cd $SERVER_PROVIDER
 tar -zxvf zheng-cms-rpc-service-assembly.tar.gz
 
 # 启动服务
