@@ -18,7 +18,7 @@ cd $SERVER_PROVIDER
 tar -zxvf zheng-cms-rpc-service-assembly.tar.gz
 
 # 启动服务
-sh /home/deploy-share/zheng-cms-rpc-service/bin/start.sh
+sh /home/deploy-share/zheng-cms-rpc-service/bin/restart.sh
 
 
 
