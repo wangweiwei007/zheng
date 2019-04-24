@@ -57,7 +57,7 @@ public class PropertiesFileUtil {
         }
     }
 
-    // 根据key读取value(整形)
+    // 根据key读取value(整型)
     public Integer getInt(String key) {
         try {
             String value = resourceBundle.getString(key);
@@ -84,4 +84,7 @@ public class PropertiesFileUtil {
         return loadTime;
     }
 
+    public static void main(String[] args) {
+        System.out.println(PropertiesFileUtil.getInstance("com.zheng.common.util.app").get("my.app.name"));
+    }
 }

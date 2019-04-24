@@ -16,4 +16,9 @@ public class UpmsUserServiceMock extends BaseServiceMock<UpmsUserMapper, UpmsUse
         return null;
     }
 
+    @Override
+    public UpmsUser updateUser(UpmsUser upmsUser) {
+        return null;
+    }
+
 }

@@ -12,4 +12,8 @@ public interface UpmsUserService extends BaseService<UpmsUser, UpmsUserExample> 
 
     UpmsUser createUser(UpmsUser upmsUser);
 
+    UpmsUser updateUser(UpmsUser upmsUser);
+
+
+
 }

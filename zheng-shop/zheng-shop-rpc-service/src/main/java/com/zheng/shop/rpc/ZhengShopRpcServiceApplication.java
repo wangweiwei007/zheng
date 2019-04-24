@@ -13,8 +13,8 @@ public class ZhengShopRpcServiceApplication {
     private static Logger _log = LoggerFactory.getLogger(ZhengShopRpcServiceApplication.class);
 
     public static void main(String[] args) {
-        _log.info(">>>>> zheng-ucenter-rpc-service 正在启动 <<<<<");
+        _log.info(">>>>> zheng-shop-rpc-service 正在启动 <<<<<");
         new ClassPathXmlApplicationContext("classpath:META-INF/spring/*.xml");
-        _log.info(">>>>> zheng-ucenter-rpc-service 启动完成 <<<<<");
+        _log.info(">>>>> zheng-shop-rpc-service 启动完成 <<<<<");
     }
 }
