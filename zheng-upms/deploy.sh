@@ -11,7 +11,7 @@ cp $SERVER_PROVIDER/zheng-upms-rpc-service-assembly.tar.gz  $SERVER_PROVIDER/bac
 rm -rf $SERVER_PROVIDER/zheng-upms-rpc-service-assembly.tar.gz
 
 # 复制新的工程
-cp $PROJ_PATH/zheng-cms/zheng-upms-rpc-service/target/zheng-upms-rpc-service-assembly.tar.gz $SERVER_PROVIDER/
+cp $PROJ_PATH/zheng-upms/zheng-upms-rpc-service/target/zheng-upms-rpc-service-assembly.tar.gz $SERVER_PROVIDER/
 
 # 解压jar包
 cd $SERVER_PROVIDER
