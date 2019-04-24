@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $PROJ_PATH/zheng-cms/zheng-upms-rpc-service
+cd $PROJ_PATH/zheng-upms/zheng-upms-rpc-service
 
 mvn clean install -Dmaven.test.skip=true
 
